@@ -1,8 +1,7 @@
 const { Schema, model } = require('mongoose');
-const Tag = require('./Tag');
 
 // Schema to create Post model
-const applicationSchema = new Schema(
+const thoughtSchema = new Schema(
   {
     published: {
       type: Boolean,
@@ -31,15 +30,15 @@ const applicationSchema = new Schema(
   }
 );
 
-// Create a virtual property `getTags` that gets the amount of tags associated with an application
-applicationSchema
+// Create a virtual property `getTags` that gets the amount of tags associated with an thought
+thoughtSchema
   .virtual('getResponses')
   // Getter
   .get(function () {
     return this.tags.length;
   });
 
-// Initialize our Application model
-const Application = model('application', applicationSchema);
+// Initialize our thought model
+const Thought = model('thought', thoughtSchema);
 
-module.exports = Application;
+module.exports = Thought;
