@@ -5,8 +5,6 @@ const {
   createThought,
   updateThought,
   deleteThought,
-  addTag,
-  removeTag,
 } = require('../../controllers/thoughtController');
 
 // /api/thoughts

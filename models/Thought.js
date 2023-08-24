@@ -26,15 +26,8 @@ const thoughtSchema = new Schema(
   }
 );
 
-// // Create a virtual property `getTags` that gets the amount of tags associated with an thought
-// thoughtSchema
-//   .virtual('getResponses')
-//   // Getter
-//   .get(function () {
-//     return this.tags.length;
-//   });
-
 // Initialize our thought model
 const Thought = model('thought', thoughtSchema);
 
-module.exports = Thought;
+module.exports =  Thought;
+

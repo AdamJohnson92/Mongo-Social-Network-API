@@ -1,8 +1,7 @@
 const { Thought, User } = require('../models');
 
 module.exports = {
-  // Function to get all of the thoughts by invoking the find() method with no arguments.
-  // Then we return the results as JSON, and catch any errors. Errors are sent as JSON with a message and a 500 status code
+  // Get all thoughts 
   async getThoughts(req, res) {
     try {
       const thoughts = await Thought.find();
@@ -11,7 +10,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // Gets a single thought using the findOneAndUpdate method. We pass in the ID of the thought and then respond with it, or an error if not found
+  // Gets a single thought 
   async getSingleThought(req, res) {
     try {
       const thought = await Thought.findOne({ _id: req.params.thoughtId });
@@ -25,8 +24,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // Creates a new thought. Accepts a request body with the entire thought object.
-  // Because thoughts are associated with Users, we then update the User who created the thought and add the ID of the thought to the thoughts array
+  // Creates a new thought
   async createThought(req, res) {
     try {
       const thought = await Thought.create(req.body);
@@ -48,7 +46,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // Updates and thought using the findOneAndUpdate method. Uses the ID, and the $set operator in mongodb to inject the request body. Enforces validation.
+  // Update one thought by id
   async updateThought(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
@@ -67,8 +65,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // Deletes an thought from the database. Looks for an thought by ID.
-  // Then if the thought exists, we look for any users associated with the thought based on he thought ID and update the thoughts array for the User.
+  // Deletes one thought by id
   async deleteThought(req, res) {
     try {
       const thought = await Thought.findOneAndRemove({ _id: req.params.thoughtId });
@@ -94,12 +91,12 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // Adds a tag to an thought. This method is unique in that we add the entire body of the tag rather than the ID with the mongodb $addToSet operator.
-  async addTag(req, res) {
+  // Adds a response to an thought. This method is unique in that we add the entire body of the response rather than the ID with the mongodb $addToSet operator.
+  async addResponse(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
-        { $addToSet: { tags: req.body } },
+        { $addToSet: { responses: req.body } },
         { runValidators: true, new: true }
       );
 
@@ -112,12 +109,12 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // Remove thought tag. This method finds the thought based on ID. It then updates the tags array associated with the thought in question by removing it's tagId from the tags array.
-  async removeTag(req, res) {
+  // Remove thought response. This method finds the thought based on ID. It then updates the responses array associated with the thought in question by removing it's responseId from the responses array.
+  async removeresponse(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
-        { $pull: { tags: { tagId: req.params.tagId } } },
+        { $pull: { responses: { responseId: req.params.responseId } } },
         { runValidators: true, new: true }
       );
 

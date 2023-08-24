@@ -1,5 +1,5 @@
 {
-    "name": "Mongo-Social-Newtwork-API",
+    "name": "MongoDB-Social-Media-Backend",
     "version": "1.0.0",
     "description": "Creates API routes to manage data coming in from a social media site",
     "main": "index.js",

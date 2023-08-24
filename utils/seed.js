@@ -1,6 +1,5 @@
 const connection = require('../config/connection');
 const { User, Thought } = require('../models');
-// const { getRandomName, getRandomThoughts } = require('./data');
 
 connection.on('error', (err) => err);
 
@@ -8,6 +7,7 @@ connection.once('open', async () => {
   console.log('connected');
   // Delete the collections if they exist
   let thoughtCheck = await connection.db.listCollections({ name: 'thoughts' }).toArray();
+  console.log(thoughtCheck)
   if (thoughtCheck.length) {
     await connection.dropCollection('thoughts');
   }
@@ -19,7 +19,7 @@ connection.once('open', async () => {
 
 ;
   const thoughts = [{description: 'Eggo is like an egg with an O because there is egg in the batter and waffles are round'}, {description: 'You all heard about Dolly? That is crazy.'}, {description: 'I am an FBI AGENT!'}];
-  const users = [{first: 'Bobby', last: 'Smith', age: 20}, {first: 'Robby', last: 'Smoth', age: 22}, {first: 'Snobby', last: 'Smeth', age: 25}, {first: 'Snobby', last: 'Smeth', age: 25}]
+  const users = [{username: 'Bobby', email: 'red@red.com', thoughts: thoughts[1]}, {username: 'Robby', email: 'blue@red.com', thoughts: thoughts[2]}, {username: 'Slobby', email: 'green@red.com', thoughts: thoughts[0]}, {username: 'Snobby', email: 'cookie@red.com'}]
 
   await User.collection.insertMany(users);
   await Thought.collection.insertMany(thoughts);
