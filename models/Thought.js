@@ -1,4 +1,5 @@
 const { Schema, model } = require('mongoose');
+const User = require('./User')
 
 // Schema to create Post model
 const thoughtSchema = new Schema(
@@ -15,7 +16,11 @@ const thoughtSchema = new Schema(
       type: String,
       minLength: 15,
       maxLength: 500,
-    }
+    },
+    user: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    },
   
   },
   {

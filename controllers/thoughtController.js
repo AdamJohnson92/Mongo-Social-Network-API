@@ -1,4 +1,4 @@
-const { Thought, User } = require('../models');
+const { Thought, User} = require('../models');
 
 module.exports = {
   // Get all thoughts 
@@ -7,6 +7,7 @@ module.exports = {
       const thoughts = await Thought.find();
       res.json(thoughts);
     } catch (err) {
+      console.log(err)
       res.status(500).json(err);
     }
   },
@@ -46,6 +47,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
+  
   // Update one thought by id
   async updateThought(req, res) {
     try {
