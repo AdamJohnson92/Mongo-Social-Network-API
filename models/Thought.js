@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose');
 const User = require('./User')
+const reactionSchema = require('./Reaction')
 
 // Schema to create Post model
 const thoughtSchema = new Schema(
@@ -14,14 +15,14 @@ const thoughtSchema = new Schema(
     },
     description: {
       type: String,
-      minLength: 15,
+      minLength: 8,
       maxLength: 500,
     },
     user: {
       type: Schema.Types.ObjectId,
       ref: 'User'
     },
-  
+    reactions: [reactionSchema]
   },
   {
     toJSON: {
