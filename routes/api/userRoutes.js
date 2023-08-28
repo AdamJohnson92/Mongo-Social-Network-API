@@ -7,10 +7,10 @@ const {
   deleteUser
 } = require('../../controllers/userController');
 
-// /api/users
+// route to get all users and to create a new user
 router.route('/').get(getUsers).post(createUser);
 
-// /api/users/:userId
+// route to get a specific user, as well as update or delete that user.
 router.route('/:userId').get(getSingleUser).put(updateUser).delete(deleteUser);
 
 module.exports = router;

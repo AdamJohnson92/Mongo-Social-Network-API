@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 const User = require('./User')
 const reactionSchema = require('./Reaction')
 
-// Schema to create Post model
+// Schema to create Thought model
 const thoughtSchema = new Schema(
   {
     createdAt: {

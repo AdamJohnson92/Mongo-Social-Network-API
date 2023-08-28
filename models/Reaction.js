@@ -30,5 +30,3 @@ const reactionSchema = new Schema(
 
 
 module.exports = reactionSchema;
-
-//user: 64e7ed8cf8904a178b11cf6c

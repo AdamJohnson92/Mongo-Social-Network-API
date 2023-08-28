@@ -40,14 +40,6 @@ connection.once('open', async () => {
   })
 
 
-// console.table(users);
-// console.table(thoughts);
+console.table(users);
 process.exit(0);
 });
-
-/* 
-{
- 	"description": "I am an FBI AGENT!",
- 	"user": {"_id": "64e7c3772fb010c1b9f1f609"}
- }
-*/

@@ -93,7 +93,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // Adds a reaction to an thought. This method is unique in that we add the entire body of the reaction rather than the ID with the mongodb $addToSet operator.
+  // Adds a reaction to an thought.
   async addReaction(req, res) {
     try {
   
@@ -112,7 +112,7 @@ module.exports = {
       res.status(500).json(err);
     }
   },
-  // Remove thought reaction. This method finds the thought based on ID. It then updates the reactions array associated with the thought in question by removing it's reactionId from the reactions array.
+  // Remove thought reaction by reaction ID
   async removeReaction(req, res) {
     try {
       const thought = await Thought.findOneAndUpdate(
