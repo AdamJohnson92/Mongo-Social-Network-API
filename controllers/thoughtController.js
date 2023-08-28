@@ -96,7 +96,7 @@ module.exports = {
   // Adds a reaction to an thought. This method is unique in that we add the entire body of the reaction rather than the ID with the mongodb $addToSet operator.
   async addReaction(req, res) {
     try {
-      // const reaction = await Reaction.create(req.body);
+  
       const thought = await Thought.findOneAndUpdate(
         { _id: req.params.thoughtId },
         { $addToSet: { reactions: req.body } },
